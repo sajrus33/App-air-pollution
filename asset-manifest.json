@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/App-air-pollution/static/css/main.2cce8147.chunk.css",
+    "main.js": "/App-air-pollution/static/js/main.fd9ec978.chunk.js",
+    "main.js.map": "/App-air-pollution/static/js/main.fd9ec978.chunk.js.map",
+    "runtime~main.js": "/App-air-pollution/static/js/runtime~main.6134837d.js",
+    "runtime~main.js.map": "/App-air-pollution/static/js/runtime~main.6134837d.js.map",
+    "static/js/2.3974ee62.chunk.js": "/App-air-pollution/static/js/2.3974ee62.chunk.js",
+    "static/js/2.3974ee62.chunk.js.map": "/App-air-pollution/static/js/2.3974ee62.chunk.js.map",
+    "index.html": "/App-air-pollution/index.html",
+    "precache-manifest.aa1c21c4da4c04a7f04c549f409b35b5.js": "/App-air-pollution/precache-manifest.aa1c21c4da4c04a7f04c549f409b35b5.js",
+    "service-worker.js": "/App-air-pollution/service-worker.js",
+    "static/css/main.2cce8147.chunk.css.map": "/App-air-pollution/static/css/main.2cce8147.chunk.css.map"
+  }
+}
