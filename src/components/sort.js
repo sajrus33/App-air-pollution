@@ -129,19 +129,33 @@ const sortData = (results) => {
             city.name
         ];
     });
-    // sort all cities based on their parameters !
-    // eslint-disable-next-line 
-    cityParamsAvarge.sort((position1, position2) => {
-        for (let i = 0; i < 7; i++) {
-            if (position1[i] > position2[i]) return -1;
-            if (position1[i] < position2[i]) return 1;
+
+    // create array of cities parameter sum with indexes !
+    let cityParamsSum = [];
+    cityParamsAvarge.forEach((param, index) => {
+        cityParamsSum[index] = { value: 0 };
+        cityParamsSum[index].index = index;
+        for (let i = 0; i < 6; i++) {
+            cityParamsSum[index].value += param[i];
         }
     });
 
-    // cutout top 10 cities
+    // sort all cities based on amount of their parameters !
+    cityParamsSum.sort((a, b) => {
+        return b.value - a.value;
+    });
 
-    cityParamsAvarge.splice(10);
-    return cityParamsAvarge;
+    // cut out only 10 top polluted cities
+    cityParamsSum.splice(10);
+
+    // take out 10 top polluted cities, based on index of 10 top sorted
+    const top10Cities = [];
+    cityParamsSum.forEach(param => {
+        top10Cities.push(cityParamsAvarge[param.index]);
+    });
+
+    // return it
+    return top10Cities;
 }
 
 export default sortData;

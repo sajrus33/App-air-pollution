@@ -32,11 +32,12 @@ const useStyles = makeStyles(theme => ({
         fontWeight: 600,
     },
     table: {
-        minWidth: 650,
+        minwidth:"650",
         overflowX: 'auto',
 
     },
 }));
+
 /** Single Accordion Element */
 
 const AccordionElement = props => {
@@ -45,13 +46,11 @@ const AccordionElement = props => {
 
         <Fade in={props.showed} timeout={400}>
             <Paper className={classes.root}>
-
                 <ExpansionPanel className={classes.panelExpansion} >
                     <ExpansionPanelSummary className={classes.panelSummary}
                         expandIcon={<ExpandMoreIcon />}
                         aria-controls={"panel" + props.index + "a-content"}
-                        id={"panel" + props.index + "a-header"}
-                    >
+                        id={"panel" + props.index + "a-header"}>
                         <Typography variant="h2" className={classes.heading}> {props.cityName}</Typography>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails >
@@ -59,36 +58,36 @@ const AccordionElement = props => {
                             <Typography style={{ marginBottom: "15px" }}>
                                 {props.cityDescribe}
                             </Typography>
-                            <Table className={classes.table} >
-                                <TableHead >
-                                    <TableRow >
-                                        <TableCell align="left">PM25</TableCell>
-                                        <TableCell align="left">PM10</TableCell>
-                                        <TableCell align="left">CO</TableCell>
-                                        <TableCell align="left">O3</TableCell>
-                                        <TableCell align="left">BC</TableCell>
-                                        <TableCell align="left">SO2</TableCell>
-                                        <TableCell align="left">NO2</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody >
-                                    <TableRow key={"row"}>
-                                        <TableCell align="left">{props.pm25} µg/m³</TableCell>
-                                        <TableCell align="left">{props.pm10} µg/m³</TableCell>
-                                        <TableCell align="left">{props.co} µg/m³</TableCell>
-                                        <TableCell align="left">{props.o3} µg/m³</TableCell>
-                                        <TableCell align="left">{props.bc} µg/m³</TableCell>
-                                        <TableCell align="left">{props.so2} µg/m³</TableCell>
-                                        <TableCell align="left">{props.no2} µg/m³</TableCell>
-
-                                    </TableRow>
-                                </TableBody>
-                            </Table>
+                            <Box display="flex" flexDirection="column" style={{ overflowX: "auto" }}>
+                                <Table className={classes.table} >
+                                    <TableHead >
+                                        <TableRow >
+                                            <TableCell align="left">PM25</TableCell>
+                                            <TableCell align="left">PM10</TableCell>
+                                            <TableCell align="left">CO</TableCell>
+                                            <TableCell align="left">O3</TableCell>
+                                            <TableCell align="left">BC</TableCell>
+                                            <TableCell align="left">SO2</TableCell>
+                                            <TableCell align="left">NO2</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody >
+                                        <TableRow key={"row"}>
+                                            <TableCell align="left">{props.pm25} µg/m³</TableCell>
+                                            <TableCell align="left">{props.pm10} µg/m³</TableCell>
+                                            <TableCell align="left">{props.co} µg/m³</TableCell>
+                                            <TableCell align="left">{props.o3} µg/m³</TableCell>
+                                            <TableCell align="left">{props.bc} µg/m³</TableCell>
+                                            <TableCell align="left">{props.so2} µg/m³</TableCell>
+                                            <TableCell align="left">{props.no2} µg/m³</TableCell>
+                                        </TableRow>
+                                    </TableBody>
+                                </Table>
+                            </Box>
                         </Box>
                     </ExpansionPanelDetails>
                 </ExpansionPanel>
             </Paper>
-
         </Fade>
 
     )
