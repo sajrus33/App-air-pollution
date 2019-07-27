@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
         fontWeight: 600,
     },
     table: {
-        minwidth:"650",
+        minWidth:"650",
         overflowX: 'auto',
 
     },

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MetaTags from 'react-meta-tags';
 import NavBar from './components/NavBar';
 import sort from './components/sort';
 
@@ -122,6 +123,15 @@ class App extends Component {
   render() {
     return (
       <React.Fragment >
+       <MetaTags>
+            <title>Top 10 air pollution city</title>
+            <meta name="description" 
+            content="Top 10 air-polluted cities in Europe. Latest air quality
+             measure in European Union. App show true quality of European country." />
+            <meta name="keywords" content="air, quality, pollution, latest, tests"></meta>
+            <meta property="og:title" content="Air quality" />
+            <meta name="author" content="Brian Wala"/>
+          </MetaTags>
         <NavBar onChangeSearch={this.onChangeSearch.bind(this)} />
         <Main
           country={this.state.countryName}
