@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "afa3f006e66fa9659364b33e3c1e0540",
+    "revision": "e1e39de6a6ecf73594c95dc54865a49c",
     "url": "/App-air-pollution/index.html"
   },
   {
-    "revision": "d382cf27e923f6bb3742",
+    "revision": "429b1f50440d2972bf1e",
     "url": "/App-air-pollution/static/css/main.ba49ec77.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/App-air-pollution/static/js/2.122fb972.chunk.js"
   },
   {
-    "revision": "d382cf27e923f6bb3742",
-    "url": "/App-air-pollution/static/js/main.1ff37bc8.chunk.js"
+    "revision": "429b1f50440d2972bf1e",
+    "url": "/App-air-pollution/static/js/main.2ca62f56.chunk.js"
   },
   {
     "revision": "134585519727cd648c7e",
