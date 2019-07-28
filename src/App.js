@@ -71,7 +71,7 @@ class App extends Component {
           break;
         case "PL": countryName = "Poland"
           break;
-        case "SP": countryName = "Spain"
+        case "ES": countryName = "Spain"
           break;
         default: //nothing to do here
           break;
