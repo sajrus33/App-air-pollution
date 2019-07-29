@@ -80,7 +80,6 @@ class App extends Component {
       this.setState({
         countryName: countryName,
         cities: localData,
-
       })
     }
   }

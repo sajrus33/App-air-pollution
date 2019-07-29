@@ -20,9 +20,9 @@ const sortData = (results) => {
         if (result.city === lastCityName) {
             locations.push(measures);
 
-
             // else if its another city, than clear array and 
         } else {
+
             // make it obj for readable keys
             const cityLocations = {};
             cityLocations["name"] = lastCityName;
@@ -54,51 +54,56 @@ const sortData = (results) => {
     // Count the avarge of each measurement parameter
     let cityParamsAvarge = [];
     citiesData.forEach((city, cityI) => {
-        let parSum;
+        let parSum = {
+            pm25: 0, pm25Amount: 0,
+            pm10: 0, pm10Amount: 0,
+            co: 0, coAmount: 0,
+            o3: 0, o3Amount: 0,
+            bc: 0, bcAmount: 0,
+            so2: 0, so2Amount: 0,
+            no2: 0, no2Amount: 0,
+        };
 
-        city.locations.forEach((location, locationI) => {
-            parSum = {
-                pm25: 0, pm25Amount: 0,
-                pm10: 0, pm10Amount: 0,
-                co: 0, coAmount: 0,
-                o3: 0, o3Amount: 0,
-                bc: 0, bcAmount: 0,
-                so2: 0, so2Amount: 0,
-                no2: 0, no2Amount: 0,
-            };
+        // Sum together all types od air pollution parameters
+        city.locations.forEach(location => {
+            location.forEach(params => {
+                const paramName = Object.getOwnPropertyNames(params);
+                switch (paramName[0]) {
+                    case "pm25":
+                        parSum.pm25 += params.pm25;
+                        parSum.pm25Amount += 1;
+                        break;
+                    case "pm10":
+                        parSum.pm10 += params.pm10;
+                        parSum.pm10Amount += 1;
+                        break;
+                    case "co":
+                        parSum.co += params.co;
+                        parSum.coAmount += 1;
+                        break;
+                    case "o3":
+                        parSum.o3 += params.o3;
+                        parSum.o3Amount += 1;
+                        break;
+                    case "bc":
+                        parSum.bc += params.bc;
+                        parSum.bcAmount += 1;
+                        break;
+                    case "so2":
+                        parSum.so2 += params.so2;
+                        parSum.so2Amount += 1;
+                        break;
+                    case "no2":
+                        parSum.no2 += params.no2;
+                        parSum.no2Amount += 1;
+                        break;
+                    default: //nothing to do here
+                        break;
+                }
 
-            // Sum together all types od air pollution parameters
-
-            if (location[locationI] && location[locationI].pm25) {
-                parSum.pm25 += location[locationI].pm25;
-                parSum.pm25Amount += 1;
-            }
-            if (location[locationI] && location[locationI].pm10) {
-                parSum.pm10 += location[locationI].pm10;
-                parSum.pm10Amount += 1;
-            }
-            if (location[locationI] && location[locationI].co) {
-                parSum.co += location[locationI].co;
-                parSum.coAmount += 1;
-            }
-            if (location[locationI] && location[locationI].o3) {
-                parSum.o3 += location[locationI].o3;
-                parSum.o3Amount += 1;
-            }
-            if (location[locationI] && location[locationI].bc) {
-                parSum.bc += location[locationI].bc;
-                parSum.bcAmount += 1;
-            }
-            if (location[locationI] && location[locationI].so2) {
-                parSum.so2 += location[locationI].so2;
-                parSum.so2Amount += 1;
-            }
-            if (location[locationI] && location[locationI].no2) {
-                parSum.no2 += location[locationI].no2;
-                parSum.no2Amount += 1;
-            }
-
+            });
         });
+
 
         // checking function 
         const checkIfExist = arg => {
@@ -109,26 +114,25 @@ const sortData = (results) => {
         };
 
         // check all params
-        parSum.pm25Amount = checkIfExist(parSum.pm25Amount);
-        parSum.pm10Amount = checkIfExist(parSum.pm10Amount);
-        parSum.coAmount = checkIfExist(parSum.coAmount);
-        parSum.o3Amount = checkIfExist(parSum.o3Amount);
-        parSum.bcAmount = checkIfExist(parSum.bcAmount);
-        parSum.so2Amount = checkIfExist(parSum.so2Amount);
-        parSum.no2Amount = checkIfExist(parSum.no2Amount);
+        Object.keys(parSum).forEach(e => {
+            if (e.includes("Amount")) {
+                parSum[e] = checkIfExist(parSum[e]);
+            }
+        });
 
         //set brand new array with counted params
         cityParamsAvarge[cityI] = [
-            parSum.pm25 / parSum.pm25Amount,
-            parSum.pm10 / parSum.pm10Amount,
-            parSum.co / parSum.coAmount,
-            parSum.o3 / parSum.o3Amount,
-            parSum.bc / parSum.bcAmount,
-            parSum.so2 / parSum.so2Amount,
-            parSum.no2 / parSum.no2Amount,
+            Math.floor(parSum.pm25 / parSum.pm25Amount),
+            Math.floor(parSum.pm10 / parSum.pm10Amount),
+            Math.floor(parSum.co / parSum.coAmount),
+            Math.floor(parSum.o3 / parSum.o3Amount),
+            Math.floor(parSum.bc / parSum.bcAmount),
+            Math.floor(parSum.so2 / parSum.so2Amount),
+            Math.floor(parSum.no2 / parSum.no2Amount),
             city.name
         ];
     });
+
 
     // create array of cities parameter sum with indexes !
     let cityParamsSum = [];
