@@ -10,7 +10,6 @@ import './App.css';
 
 
 class App extends Component {
-
   state = {
     cities: [],
     countryInput: null,
@@ -88,22 +87,24 @@ class App extends Component {
   /** Input change handler for SearchInput */
 
   async onChangeSearch(e) {
+    
+    if(e){
     const inputValue = e.value;
-    let shortcutValue = this.state.countryInput;
 
-    switch (inputValue) {
-      case "France": shortcutValue = "FR"
-        break;
-      case "Germany": shortcutValue = "DE"
-        break;
-      case "Poland": shortcutValue = "PL"
-        break;
-      case "Spain": shortcutValue = "ES"
-        break;
-      default: //nothing to do here
-        break;
+      let shortcutValue = this.state.countryInput;
+
+      switch (inputValue) {
+        case "France": shortcutValue = "FR"
+          break;
+        case "Germany": shortcutValue = "DE"
+          break;
+        case "Poland": shortcutValue = "PL"
+          break;
+        case "Spain": shortcutValue = "ES"
+          break;
+        default: //nothing to do here
+          break;
     }
-
     // if there is different input than last one
     if (shortcutValue !== this.state.countryInput) {
 
@@ -117,6 +118,10 @@ class App extends Component {
       // Run Accordion Elements Animation <Fade>
       this.setState({ AccordionShowed: true });
     }
+
+    }
+
+    
   }
 
   render() {

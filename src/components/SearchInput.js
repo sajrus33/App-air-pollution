@@ -214,8 +214,9 @@ export default function SearchInput(props) {
   const [single, setSingle] = React.useState(null);
 
   function handleChangeSingle(value) {
-    setSingle(value);
-    props.onChangeSearch(value);
+      setSingle(value);
+      props.onChangeSearch(value);
+
   }
 
 
@@ -233,6 +234,8 @@ export default function SearchInput(props) {
     <div className={classes.root}>
       <NoSsr>
         <Select
+          isClearable={true}
+          backspaceRemoves={true} deleteRemoves={true} searchable={true}
           classes={classes}
           styles={selectStyles}
           inputId="react-select-single"
