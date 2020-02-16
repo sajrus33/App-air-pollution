@@ -7,7 +7,13 @@ import './App.css'
 
 
 class App extends Component {
-
+  state = {
+    cities: [],
+    countryInput: null,
+    countryName: null,
+    error: null,
+    accordionIsShowed: true
+  }
   /** LocalStorage getting */
   async componentDidMount() {
     const localData = JSON.parse(localStorage.getItem('localData'))
@@ -35,7 +41,7 @@ class App extends Component {
     }
   }
 
-  onChangeSearch = async(e) => {
+   onChangeSearch = async(e) => {
     if (e) {
       const { value } = e
       let actualCountryInput
@@ -66,7 +72,7 @@ class App extends Component {
     }
   }
 
-  getData = async() => {
+  async getData() {
     const { countryInput } = this.state
 
     const url = `https://api.openaq.org/v1/latest?country=${countryInput}&order_by=city&limit=10000`
