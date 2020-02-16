@@ -7,13 +7,6 @@ import './App.css'
 
 
 class App extends Component {
-  state = {
-    cities: [],
-    countryInput: null,
-    countryName: null,
-    error: null,
-    accordionIsShowed: true
-  }
 
   /** LocalStorage getting */
   async componentDidMount() {
@@ -42,7 +35,7 @@ class App extends Component {
     }
   }
 
-   onChangeSearch = async(e) => {
+  onChangeSearch = async(e) => {
     if (e) {
       const { value } = e
       let actualCountryInput
@@ -73,10 +66,10 @@ class App extends Component {
     }
   }
 
-  async getData() {
-    const country = this.state.countryInput
+  getData = async() => {
+    const { countryInput } = this.state
 
-    const url = `https://api.openaq.org/v1/latest?country=${country}&order_by=city&limit=10000`
+    const url = `https://api.openaq.org/v1/latest?country=${countryInput}&order_by=city&limit=10000`
     const res = await fetch(url)
 
     if (res.ok) {
@@ -97,8 +90,6 @@ class App extends Component {
     const {
       cities, accordionIsShowed, error
     } = this.state
-    console.log(cities)
-
     return (
       <>
         <MetaTags>
